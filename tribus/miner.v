@@ -27,7 +27,7 @@ module miner # (
 	output [31:0] nonce_out
  );
 
-	localparam OFFSET = 32'd242;
+	localparam OFFSET = 32'd294;
 
 	wire [511:0] hash1, hash2;
 	wire [31:0] hash3;
