@@ -20,12 +20,9 @@ void sha3hash(void *state, const void *input)
 
 int scanhash_sha3(int thr_id, struct work *work, uint32_t max_nonce, uint64_t *hashes_done)
 {
+	uint32_t *pdata = work->data;
+	uint32_t *ptarget = work->target;
 
-	return 0;
-}
-/*
-int scanhash_sha3(int thr_id, uint32_t *pdata, const uint32_t *ptarget, uint32_t max_nonce, unsigned long *hashes_done)
-{
 	uint32_t n = pdata[24] - 1;
 	const uint32_t first_nonce = pdata[24];
 	const uint32_t Htarg = ptarget[0];
@@ -54,4 +51,3 @@ int scanhash_sha3(int thr_id, uint32_t *pdata, const uint32_t *ptarget, uint32_t
 	pdata[24] = n;
 	return 0;
 }
-*/
