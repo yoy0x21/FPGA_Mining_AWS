@@ -206,6 +206,7 @@ enum algos {
 	ALGO_XEVAN,
 	ALGO_YESCRYPT,
 	ALGO_ZR5,
+	ALGO_SHA3,
 	ALGO_COUNT
 };
 
@@ -264,6 +265,7 @@ static const char *algo_names[] = {
 	"xevan",
 	"yescrypt",
 	"zr5",
+	"sha3",
 	"\0"
 };
 
@@ -437,6 +439,7 @@ Options:\n\
                               xevan        Xevan (BitSend)\n\
                               yescrypt     Yescrypt\n\
                               zr5          ZR5\n\
+                              sha3         SHA3\n\
   -F, --fpga <n>             Number of AWS FPGAs in the instance (1 or 8)\n\
   -o, --url <url>            URL of mining server\n\
   -O, --userpass <u:p>       Username:password pair for mining server\n\

@@ -41,7 +41,7 @@ ENDIF (SDK_FOUND)
 
 add_subdirectory(compat/jansson)
 
-include_directories( ~/aws-fpga/sdk/userspace/include  ~/aws-fpga/sdk/userspace/include/hal ${PROJECT_SOURCE_DIR} ${PROJECT_SOURCE_DIR}/algo ${PROJECT_SOURCE_DIR}/compat/jansson ${CURL_INCLUDE_DIR} ${LIBUSB_INCLUDE_DIR} ${AWS_SDK_INCLUDE_DIRS})
+include_directories( ~/work/aws-fpga/sdk/userspace/include  ~/work/aws-fpga/sdk/userspace/include/hal ${PROJECT_SOURCE_DIR} ${PROJECT_SOURCE_DIR}/algo ${PROJECT_SOURCE_DIR}/compat/jansson ${CURL_INCLUDE_DIR} ${LIBUSB_INCLUDE_DIR} ${AWS_SDK_INCLUDE_DIRS})
 
 set(SRC_LIST fpga-miner.c
 		api.c
