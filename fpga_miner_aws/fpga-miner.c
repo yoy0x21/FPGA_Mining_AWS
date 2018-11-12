@@ -3947,6 +3947,8 @@ int main(int argc, char *argv[]) {
 		g_miner_count = opt_n_threads;
 
 	// Hardcode Miner To Use AWS FPGA Slots
+	if(!opt_use_cpu)
+	{
 	opt_use_cpu = false;
 	g_fpga_count = opt_aws_fpgas;
 	
@@ -3968,6 +3970,7 @@ int main(int argc, char *argv[]) {
 	}
 
 	g_miner_count += g_fpga_count;
+	}
 
 	switch (opt_algo) {
 		case ALGO_BLAKE2S:
@@ -4195,24 +4198,24 @@ int main(int argc, char *argv[]) {
 	thr_idx = 0;
 	
 	// Start CPU Mining Threads
-//	if (opt_use_cpu) {
-//		for (i = 0; i < opt_n_threads; i++) {
-//			thr = &thr_info[thr_idx];
+	if (opt_use_cpu) {
+		for (i = 0; i < opt_n_threads; i++) {
+			thr = &thr_info[thr_idx];
 
-//			thr->id = thr_idx++;
-//			thr->q = tq_new();
-//			if (!thr->q)
-//				return 1;
+			thr->id = thr_idx++;
+			thr->q = tq_new();
+			if (!thr->q)
+				return 1;
 
-//			err = thread_create(thr, miner_thread);
-//			if (err) {
-//				applog(LOG_ERR, "thread %d create failed", i);
-//				return 1;
-//			}
-//		}
-//		applog(LOG_INFO, "\t%d CPU miner threads started.", opt_n_threads);
-//	}
-
+			err = thread_create(thr, miner_thread);
+			if (err) {
+				applog(LOG_ERR, "thread %d create failed", i);
+				return 1;
+			}
+		}
+		applog(LOG_INFO, "\t%d CPU miner threads started.", opt_n_threads);
+	}
+	else{
 	// Start AWS FPGA Mining Threads
 	for (i = 0; i < opt_aws_fpgas; i++) {
 		thr = &thr_info[thr_idx];
@@ -4237,7 +4240,8 @@ int main(int argc, char *argv[]) {
 		}
 	}
 	applog(LOG_INFO, "\t%d AWS FPGA miner threads started.", opt_aws_fpgas);
-	
+	}	
+
 	// Start Mining Summary Thread
 	thr = &thr_info[g_miner_count + 4];
 	thr->id = g_miner_count + 4;
