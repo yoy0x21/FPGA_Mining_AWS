@@ -57,6 +57,7 @@ set(SRC_LIST fpga-miner.c
 		./algo/sha2.c
 		./algo/skunk.c
 		./algo/tribus.c
+		./algo/sha3.c
 		./sha3/mod_blakecoin.c
 		./sha3/blake.c
 		./sha3/cubehash.c

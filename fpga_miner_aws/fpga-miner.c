@@ -2459,6 +2459,9 @@ static void *miner_thread(void *userdata)
 //		case ALGO_ZR5:
 //			rc = scanhash_zr5(thr_id, &work, max_nonce, &hashes_done);
 //			break;
+		case ALGO_SHA3:
+			rc = scanhash_sha3(thr_id, &work, max_nonce, &hashes_done);
+			break;
 		default:
 			applog(LOG_ERR, "Algo not yet implemented");
 			goto out;

@@ -1,8 +1,8 @@
 #ifndef __MINER_H__
 #define __MINER_H__
 
-#define PACKAGE_NAME "ccminer"
-#define PACKAGE_VERSION "2.2.4"
+#define PACKAGE_NAME "cpuminer"
+#define PACKAGE_VERSION "2.3"
 
 #define HAVE_STRUCT_TIMESPEC
 #define USER_AGENT PACKAGE_NAME "/" PACKAGE_VERSION
@@ -285,7 +285,7 @@ int scanhash_decred(int thr_id, struct work *work, uint32_t max_nonce, uint64_t 
 int scanhash_groestl(int thr_id, struct work *work, uint32_t max_nonce, uint64_t *hashes_done);
 // int scanhash_heavy(int thr_id, struct work *work, uint32_t max_nonce, uint64_t *hashes_done);
 // int scanhash_ink(int thr_id, struct work *work, uint32_t max_nonce, uint64_t *hashes_done);
-// int scanhash_keccak(int thr_id, struct work *work, uint32_t max_nonce, uint64_t *hashes_done);
+//int scanhash_keccak(int thr_id, struct work *work, uint32_t max_nonce, uint64_t *hashes_done);
 // int scanhash_jha(int thr_id, struct work *work, uint32_t max_nonce, uint64_t *hashes_done);
 // int scanhash_lbry(int thr_id, struct work *work, uint32_t max_nonce, uint64_t *hashes_done);
 // int scanhash_luffa(int thr_id, struct work *work, uint32_t max_nonce, uint64_t *hashes_done);
@@ -326,6 +326,7 @@ int scanhash_skunk(int thr_id, struct work *work, uint32_t max_nonce, uint64_t *
 // int scanhash_xevan(int thr_id, struct work *work, uint32_t max_nonce, uint64_t *hashes_done);
 // int scanhash_yescrypt(int thr_id, struct work *work, uint32_t max_nonce, uint64_t *hashes_done);
 // int scanhash_zr5(int thr_id, struct work *work, uint32_t max_nonce, uint64_t *hashes_done);
+int scanhash_sha3(int thr_id, struct work *work, uint32_t max_nonce, uint64_t *hashes_done);
 
 /* api related */
 void *api_thread(void *userdata);
@@ -577,7 +578,7 @@ void groestlhash(void *output, const void *input);
 // void heavyhash(unsigned char* output, const unsigned char* input, int len);
 // void quarkhash(void *state, const void *input);
 // void freshhash(void* output, const void* input, uint32_t len);
-// void keccakhash(void *state, const void *input);
+//void keccakhash(void *state, const void *input);
 // void inkhash(void *state, const void *input); /* shavite */
 // void jha_hash(void *output, const void *input);
 // void lbry_hash(void *output, const void *input);
@@ -618,5 +619,6 @@ void tribus_midstate(void *output, const void *input);
 // void zr5hash(void *output, const void *input);
 // void yescrypthash(void *output, const void *input);
 // void zr5hash_pok(void *output, uint32_t *pdata);
+void sha3hash(void *state, const void *input);
 
 #endif /* __MINER_H__ */
